@@ -1,0 +1,7 @@
+ocm delete /api/clusters_mgmt/v1/clusters/1k72048eadpj5am1nqbl6d7h9dr93smf
+ocm delete /api/clusters_mgmt/v1/clusters/<id>
+ocm get /api/clusters_mgmt/v1/clusters | grep dbindra
+
+https://api.stage.openshift.com/api/clusters_mgmt/v1/clusters
+
+ocm delete /api/clusters_mgmt/v1/clusters/1k72048eadpj5am1nqbl6d7h9dr93smf

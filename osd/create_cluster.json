@@ -1,0 +1,30 @@
+{
+    "name": "dbindra-first",
+    "region": {
+        "id": "us-east-1"
+    },
+    "nodes": {
+        "compute_machine_type": {
+            "id": "m5.2xlarge"
+        },
+        "compute": 6
+    },
+    "managed": true,
+    "cloud_provider": {
+        "id": "aws"
+    },
+    "multi_az": false,
+    "node_drain_grace_period": {
+        "value": 60,
+        "unit": "minutes"
+    },
+    "billing_model": "standard",
+    "product": {
+        "id": "osd"
+    },
+    "load_balancer_quota": 0,
+    "storage_quota": {
+        "unit": "B",
+        "value": 107374182400
+    }
+}
