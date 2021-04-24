@@ -17,6 +17,8 @@ if [[ "$1" == "-h" || "$1" == "--help" || "$1" == "help" ]]; then
     echo -e "\t MACHINE_TYPE: To specify machine type of the cluster"
     echo -e "\t\t MACHINE_TYPE can be m5.xlarge or m5.2xlarge or m5.4xlarge"
     echo -e "\t\t default: m5.2xlarge \n"
+    echo "Cluster quota information:"
+    echo "$(ocm account quota)"
     exit
 fi
 
@@ -90,11 +92,16 @@ rm create_cluster1.json
 
 CLUSTER_STATE=$(ocm get /api/clusters_mgmt/v1/clusters --parameter search="name like '${KERBEROS_ID}-${CLUSTER_NAME}'" | jq -r .items[].status.state)
 
-until [[ "$CLUSTER_STATE" == "ready" ]]
+until [[ "$CLUSTER_STATE" == "ready" || "$CLUSTER_NAME" == "uninstalling" ]]
 do
     echo "Info: Waiting for cluster to be in ready state"
     sleep 60
     CLUSTER_STATE=$(ocm get /api/clusters_mgmt/v1/clusters --parameter search="name like '${KERBEROS_ID}-${CLUSTER_NAME}'" | jq -r .items[].status.state)
 done
+
+if [[ "$CLUSTER_STATE" == "uninstalling" ]]; then
+    echo "Cluster was uninstalled manually"
+    exit 1
+fi
 
 echo "Cluster has successfully deployed"
