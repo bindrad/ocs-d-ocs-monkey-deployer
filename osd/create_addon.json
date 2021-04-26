@@ -1,0 +1,11 @@
+{
+    "addon": {
+        "id": "ocs-converged-dev"
+    },
+    "parameters": {
+        "items": [{
+            "id": "size",
+            "value": "1"
+        }]
+    }
+}

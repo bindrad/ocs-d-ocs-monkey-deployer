@@ -105,3 +105,5 @@ if [[ "$CLUSTER_STATE" == "uninstalling" ]]; then
 fi
 
 echo "Cluster has successfully deployed"
+
+
